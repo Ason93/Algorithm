@@ -1,0 +1,145 @@
+Jupyter Notebook
+Part4-OpenVINO_Video_Inference
+Last Checkpoint: 04/30/2019
+(unsaved changes)
+Current Kernel Logo
+tf_training 
+File
+Edit
+View
+Insert
+Cell
+Kernel
+Widgets
+Help
+
+OpenVINO Video Inference on CPU
+Copyright (c) 2019 Intel Corporation.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Objective
+Transform your frozen graph into an intermediate representation (.bin/.xml) needed to use with OpenVINO then instantiate your OpenVINO model and inference live on a video file.
+
+Activities
+In this section of the training you will
+
+Create Intermediate Representation (.bin/.xml)
+Understand OpenVINO Arguments
+Instantiate OpenVINO Network
+Use OpenCV to read video and pass frames to OpenVINO
+Click the cell below and then click Run.
+
+import cv2
+import numpy as np
+from PIL import Image
+import PIL
+import io
+import IPython.display
+from IPython.display import clear_output
+Use Model Optimizer
+We're going to start by creating our Intermediate Representation (IR) using the OpenVINO Model Optimizer. We're going to call out directly to the command line and look for the mo.py file. We'll also pass in parameters for our input model and the input shape for our topology. This command will, by default, generate the FP32 version of the IR, if you want to generate the FP16 version you need to add --data_type=FP16 to the parameters passed to mo.py.
+
+For more information on Model Optimizer please visit: https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Converting_Model.html
+
+Click the cell below and then click Run.
+
+!mo.py --input_model=tf_model/top_layers.iv3.pb --input_shape=[1,299,299,3]
+Instantiate Network
+Next, we'll instantiate our network. If you want to take a closer look at all the specific steps required to instantitate the network look at the inference.py file included in this directory. Instead, we're going to look at the parameters passed to the constructor. We see the .XML file passed as the base model, no CPU extensions and targeting the CPU as the device type.
+
+Then we'll call out to the constructor for the Network instantiation. We then want to load our model into that network by passing in the above parameters to load_model. Lastly, we'll read in our labels file that we're going to use to decode the results during our inference.
+
+Click the cell below and then click Run.
+
+from inference import Network
+import sys
+​
+arg_model="top_layers.iv3.xml"
+arg_cpu_extension=None
+arg_device="CPU"
+​
+# Initialise the class
+infer_network = Network()
+# Load the network to IE plugin to get shape of input layer
+plugin, (n_fd, c_fd, h_fd, w_fd) = infer_network.load_model(arg_model, arg_device, 1, 1, 0, arg_cpu_extension)
+​
+#Read in Labels
+arg_labels="iv3-labels.txt"
+label_file = open(arg_labels, "r")
+labels = label_file.read().split('\n')
+Now for the inference! There are 8 steps that we're doing in the code below:
+
+Start a video or webcam capture
+Read the video frame
+Put the classification text on to the frame
+Render the frame to the Cell output field
+Resize/Transpose/Reshape/Preprocess frame
+Start an inference request
+Interpret the inference result
+Clear frame from notebook cell
+Click the cell below and then click Run.
+
+from keras.applications.inception_v3 import preprocess_input
+import time
+​
+cap = cv2.VideoCapture("toyotacorolla.mp4")
+pred_label = ""
+fps = 0
+ips = 0
+while True:
+    time1 = time.time()
+    ret, next_frame = cap.read()
+    
+    if ret:
+        next_frame = cv2.cvtColor(next_frame, cv2.COLOR_BGR2RGB)
+​
+        cv2.putText(next_frame,str(pred_label) + " " + str(fps) + "fps " + str(ips) + "ips", (20,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,2550), 4)
+        cv2.putText(next_frame,str(pred_label) + " " + str(fps) + "fps " + str(ips) + "ips", (20,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,0), 2)
+​
+        f = io.BytesIO()
+        PIL.Image.fromarray(next_frame).save(f, 'jpeg')
+        IPython.display.display(IPython.display.Image(data=f.getvalue()))
+​
+        in_frame_fd = cv2.resize(next_frame, (w_fd, h_fd))
+        in_frame_fd = in_frame_fd.transpose((2, 0, 1))
+        in_frame_fd = in_frame_fd.reshape((n_fd, c_fd, h_fd, w_fd))
+        in_frame_fd = preprocess_input(in_frame_fd)
+​
+        time3 = time.time()
+        # Start asynchronous inference for specified request
+        infer_network.exec_net(0, in_frame_fd)
+        # Wait for the result
+        infer_network.wait(0)
+        # Results of the output layer of the network
+        res = infer_network.get_output(0)
+        time4 = time.time()
+​
+        top = res[0].argsort()[-1:][::-1]
+        pred_label = labels[top[0]]
+​
+        time2 = time.time()
+        fps = '%.1f' % (1/(time2-time1))
+        ips = '%.1f' % (1/(time4-time3))
+​
+        clear_output(wait=True)
+    else:
+        break
+​
+clear_output(wait=True)
+print("Video Ended")
+infer_network.clean()
+cap.release()
+cv2.destroyAllWindows()
+Summary
+In this section of the training you learned
+
+Create Intermediate Representation (.bin/.xml)
+Understand OpenVINO Arguments
+Instantiate OpenVINO Network
+Use OpenCV to read video and pass frames to OpenVINO
+
