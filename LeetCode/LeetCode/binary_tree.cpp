@@ -2,7 +2,8 @@
 
 BinaryTree::BinaryTree()
 {
-	data = new int[7]{ 3, 9, 20, NULL, NULL, 15, 7 };
+	//data = new int[7]{ 3, 9, 20, NULL, NULL, 15, 7 };
+	data = new int[7]{ 3, 2, 20, NULL, NULL, 10, 30 };
 	//root = CreateTree(0);
 	root = CreateTree(0, 7);
 }

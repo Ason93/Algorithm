@@ -25,11 +25,14 @@ public:
 	TreeNode* CreateTree(int i, const int len);
 	//TreeNode* CreateTree(int i);
 	int UseLevelOrder();
-	void LevelOrder(TreeNode* node, int depth);
+	void LevelOrder(TreeNode* node, int depth);  // DFS
+	void LevelOrder(TreeNode* root); // BFS
 	int UseMaxDepth();
-	int MaxDepth(TreeNode* node);
+	//int MaxDepth(TreeNode* node); // DFS
+	int MaxDepth(TreeNode* root); // BFS
 	int UseMinDepth();
-	int MinDepth(TreeNode* node);
+	//int MinDepth(TreeNode* node); // DFS
+	int MinDepth(TreeNode* root); // BFS
 };
 
 #endif // !_BINARY_TREE_H_

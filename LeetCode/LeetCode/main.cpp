@@ -2,10 +2,44 @@
 
 int main()
 {
+	// 206.Reverse Linked List
+	// 24.Swap Nodes in Pairs
+	// 141. Linked List Cycle
+	// 142. Linked List Cycle II
+	// 25. Reverse Nodes in k-Group
+	UseList();
+
+	// 20. Valid Parentheses
+	UseValidParentheses();
+
+	// 232. Implement Queue using Stacks
+	// 225. Implement Stack using Queues
+	UseQueueOrStack();
+
+	// 703. Kth Largest Element in a Stream
+	UseKthLargest();
+
+	// 239. Sliding Window Maximum
+	UseSlidingWindowMaximum();
+
+	// 242. Valid Anagram
+	UseIsAnagram();
+
+	// 1. Two Sum
+	UseTwoSum();
+
+	// 15. 3Sum 
+	UseThreeSum();
+
+	// 98. Validate Binary Search Tree
+	UseIsValidBST();
+
 	// 50.Pow
 	UseMyPow();
+
 	// 169.Majority
-	UseMyMajority();
+	UseMajorityElement();
+
 	// 122.Buy/Sell Stocks
 	UseBuySellStocks();
 
@@ -20,7 +54,7 @@ int main()
 	// 22.Generate Parentheses
 	UseGenerateParentheses();
 
-	// 51/52.N_Quees
+	// 51/52.N_Queens
 	UseNQueens();
 
 	// 36/37.Sudoku

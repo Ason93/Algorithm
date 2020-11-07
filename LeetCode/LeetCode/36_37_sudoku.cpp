@@ -7,7 +7,7 @@ bool isValid(vector<vector<char>>& board, int i, int j, char c){
 	for (int k = 0; k < n; k++) {
 		if (board[i][k] != '.' && c == board[i][k]) {
 			return false;
-			}
+		}
 		if (board[k][j] != '.' && c == board[k][j]) {
 			return false;
 		}

@@ -21,9 +21,6 @@
     <ClCompile Include="50_pow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="169_majority.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="122_buy_sell_stocks.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -88,6 +85,39 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="146_lru_cache.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="20_valid_parentheses.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="206_24_141_142_25_linked_list.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="232_225_queue_stack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="703_kth_largest_ellement_in_a_stream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="239_sliding_window_maximum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="242_valid_anagram.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="1_two_sum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="15_3Sum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="98_validate_binary_search_tree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="236_lowest_common_ancestor_of_a_binary_tree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="169_majority_element.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

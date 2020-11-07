@@ -141,14 +141,22 @@
     <ClCompile Include="102_binary_tree_level_order_traversal.cpp" />
     <ClCompile Include="104_maximum_depth_of_binary_tree.cpp" />
     <ClCompile Include="146_lru_cache.cpp" />
+    <ClCompile Include="15_3Sum.cpp" />
+    <ClCompile Include="169_majority_element.cpp" />
+    <ClCompile Include="1_two_sum.cpp" />
     <ClCompile Include="200_number_of_islands.cpp" />
+    <ClCompile Include="206_24_141_142_25_linked_list.cpp" />
+    <ClCompile Include="20_valid_parentheses.cpp" />
+    <ClCompile Include="232_225_queue_stack.cpp" />
+    <ClCompile Include="236_lowest_common_ancestor_of_a_binary_tree.cpp" />
+    <ClCompile Include="239_sliding_window_maximum.cpp" />
+    <ClCompile Include="242_valid_anagram.cpp" />
     <ClCompile Include="300_longest_increasing_sequence.cpp" />
     <ClCompile Include="111_minimum_depth_of_binary_tree.cpp" />
     <ClCompile Include="120_triangle.cpp" />
     <ClCompile Include="121_122_123_309_188_714_buy_and_sell_stock.cpp" />
     <ClCompile Include="122_buy_sell_stocks.cpp" />
     <ClCompile Include="152_maximum_product_subarray.cpp" />
-    <ClCompile Include="169_majority.cpp" />
     <ClCompile Include="191_number_of_1_bits.cpp" />
     <ClCompile Include="208_implement_trie.cpp" />
     <ClCompile Include="22_generate_parentheses.cpp" />
@@ -158,9 +166,11 @@
     <ClCompile Include="50_pow.cpp" />
     <ClCompile Include="51_52_n_queens.cpp" />
     <ClCompile Include="547_friend_circles.cpp" />
+    <ClCompile Include="703_kth_largest_ellement_in_a_stream.cpp" />
     <ClCompile Include="70_climbing_stairs.cpp" />
     <ClCompile Include="72_edit_distance.cpp" />
     <ClCompile Include="79_212_word_search.cpp" />
+    <ClCompile Include="98_validate_binary_search_tree.cpp" />
     <ClCompile Include="binary_tree.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

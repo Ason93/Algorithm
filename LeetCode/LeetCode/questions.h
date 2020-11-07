@@ -8,10 +8,20 @@
 #include <set>
 #include <map>
 #include <numeric>
+#include <stack>
 #include <assert.h>
 
+int UseList();
+int UseValidParentheses();
+int UseQueueOrStack();
+int UseKthLargest();
+int UseSlidingWindowMaximum();
+int UseIsAnagram();
+int UseTwoSum();
+int UseThreeSum();
+int UseIsValidBST();
 int UseMyPow();
-int UseMyMajority();
+int UseMajorityElement();
 int UseBuySellStocks();
 int UseGenerateParentheses();
 int UseNQueens();
