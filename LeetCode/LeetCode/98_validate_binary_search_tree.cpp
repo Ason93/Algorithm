@@ -33,10 +33,9 @@ int UseIsValidBST() {
 	cout << "*************** 98. Validate Binary Search Tree ***************" << endl;
 
 	BinaryTree* tree  = new BinaryTree();
-	TreeNode* root = tree->CreateTree(0, 7);
 
 	Solution S;
-	bool results = S.isValidBST(root);
+	bool results = S.isValidBST(tree->root);
 
 	cout << "Whether the Tree is Validate Binary Search Tree : " << results << endl;
 

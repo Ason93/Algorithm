@@ -34,6 +34,9 @@ int main()
 	// 98. Validate Binary Search Tree
 	UseIsValidBST();
 
+	// 235/236. Lowest Common Ancestor
+	UselowestCommonAncestor();
+
 	// 50.Pow
 	UseMyPow();
 

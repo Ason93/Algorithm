@@ -16,10 +16,14 @@ struct TreeNode
 class BinaryTree
 {
 private:
-	int* data;
-	TreeNode* root;
+	int* data = nullptr;
 	vector<vector<int>> data_ordered;
 public:
+
+	TreeNode* root = nullptr;
+	TreeNode* p = nullptr;
+	TreeNode* q = nullptr;
+
 	BinaryTree();
 	~BinaryTree();
 	TreeNode* CreateTree(int i, const int len);

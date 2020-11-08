@@ -114,10 +114,10 @@
     <ClCompile Include="98_validate_binary_search_tree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="236_lowest_common_ancestor_of_a_binary_tree.cpp">
+    <ClCompile Include="169_majority_element.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="169_majority_element.cpp">
+    <ClCompile Include="236_235_lowest_common_ancestor_of_a_binary_tree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
